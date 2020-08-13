@@ -1,0 +1,9 @@
+.Note{
+    margin-top : 10px;
+    transition: all 0.3s ease-out;
+}
+
+.Note:hover{
+    cursor: pointer;
+    background-color: beige;
+}
