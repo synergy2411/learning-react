@@ -40,10 +40,10 @@ class LifeCycleDemo extends React.Component{
     }
     render(){
         console.log("[render]")
-        let child = null;
-        if(this.state.showChild){
-            child = <Child />
-        }
+        // let child = null;
+        // if(this.state.showChild){
+        //     child = <Child />
+        // }
         return (
             <div>
                 <p>Life Cycle is in progress...</p>
@@ -54,7 +54,9 @@ class LifeCycleDemo extends React.Component{
 
                     <button onClick = {this.toggleChild}>Toggle Child</button>
 
-                  {child}
+                  {/* {child} */}
+
+                  {this.state.showChild ? <Child /> : null}
             </div>
 
         )

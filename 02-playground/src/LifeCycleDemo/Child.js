@@ -4,6 +4,9 @@ class Child extends React.Component{
     componentWillUnmount () {
         console.log("[Child - componentWillUnmount]");
     }
+    componentDidMount (){
+        console.log("[Child - componentDidMount]")
+    }
     render(){
         console.log("[Child - render]")
         return (
