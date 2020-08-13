@@ -1,11 +1,13 @@
 import React from 'react';
+import Child from './Child';
 
 class LifeCycleDemo extends React.Component{
     constructor(){
         super()
         console.log("[constructor]");
         this.state = {
-            counter : 0
+            counter : 0,
+            showChild : true
         }
         this.onDecrease = this.onDecrease.bind(this);
     }
@@ -25,22 +27,34 @@ class LifeCycleDemo extends React.Component{
             counter : this.state.counter + 1
         })
     }
-    onDecrease(){
+    onDecrease(event){
         console.log("DECREASE")
         this.setState({
             counter : this.state.counter -1
         })
     }
 
+    toggleChild = () => {
+        // this.state.showChild = false;
+        this.setState({showChild : !this.state.showChild})
+    }
     render(){
         console.log("[render]")
+        let child = null;
+        if(this.state.showChild){
+            child = <Child />
+        }
         return (
             <div>
                 <p>Life Cycle is in progress...</p>
                 <p>Counter : {this.state.counter} </p>
                   <button onClick = {(event) => this.onIncrease(event, 99)} >Increase</button>  
                   {/* <button onClick = {this.onDecrease.bind(this)} >Decrease</button>   */}
-                  <button onClick = {this.onDecrease} >Decrease</button>  
+                  <button onClick = {(event) => this.onDecrease(event)} >Decrease</button>  
+
+                    <button onClick = {this.toggleChild}>Toggle Child</button>
+
+                  {child}
             </div>
 
         )
