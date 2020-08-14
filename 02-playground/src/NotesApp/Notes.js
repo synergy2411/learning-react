@@ -1,6 +1,7 @@
 import React from 'react';
 import Note from './Note/Note';
 import EditNote from './EditNote/EditNote';
+import NewNoteForm from './NewNoteForm/NewNoteForm';
 
 class Notes extends React.Component{
     state = {
@@ -11,10 +12,9 @@ class Notes extends React.Component{
             {id : 4, title : "reading", body : "read the books"},
         ],
         selectedNoteId : null,
-        showEditNote : false
+        showEditNote : false,
+        showNewNoteForm : false
     }
-
-    
 
     onSelectedNote = id =>{
         this.setState({
@@ -43,6 +43,11 @@ class Notes extends React.Component{
             selectedNoteId : null
         }) 
     }
+
+    addNote = (title, body) => {
+        // write code for add item in state notes  
+    }
+
     render(){
         let notes= this.state.notes.map(note => {
             return <Note note={note} 
@@ -58,15 +63,28 @@ class Notes extends React.Component{
                                 onDelete = {() => this.onNoteDelete(notes[position].id)} 
                                 onEdit = { body => this.onNoteEdit(body, notes[position].id)}/>
         }
-
+        let newNoteForm = null;
+        if(this.state.showNewNoteForm){
+            newNoteForm = <NewNoteForm  onAddNewNote = {(title, body) => {this.addNote(title, body)}}/>
+        }
         return (
             <>
+            <p className="display-4 text-center">My Awesome Notes <br/>
+            <span>
+                <button className="btn btn-dark" 
+                        onClick={() => {this.setState({showNewNoteForm : true})}} >Add New Note</button>
+            </span>
+            </p>
+            
             <div className="row">
                 {notes}
             </div>
             <hr />
             <div className="row">
                 {editNote}
+            </div>
+            <div className="row">
+                {newNoteForm}
             </div>
             </>
         )

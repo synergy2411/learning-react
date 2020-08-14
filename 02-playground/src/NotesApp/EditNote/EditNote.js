@@ -15,6 +15,12 @@ class EditNote extends React.Component{
     onEdit = () => {
         this.props.onEdit(this.state.txtValue)
     }
+
+    UNSAFE_componentWillReceiveProps(nextProps){
+        // console.log("Next Props : ", nextProps);
+        this.setState({txtValue : nextProps.note.body});
+    }
+
     render(){
         return (
             <div className="col-sm-10 offset-sm-1 col-md-8 offset-md-2">
