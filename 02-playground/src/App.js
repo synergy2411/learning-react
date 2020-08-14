@@ -9,6 +9,7 @@ import ErrorBoundaryDemo from "./ErrorBoundaryDemo/ErrorBoundaryDemo";
 import ErrorBoundary from "./hoc/ErrorBoundary";
 import Notes from "./NotesApp/Notes";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import PropsParent from "./PropTypesDemo/PropsParent";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
       <h3>React Playground</h3>
       <hr />
 
-      <Notes />
+      <PropsParent />
+
+      {/* <Notes /> */}
 
 
 
