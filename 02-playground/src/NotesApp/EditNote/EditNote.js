@@ -5,12 +5,16 @@ class EditNote extends React.Component{
     state = {
         txtValue : this.props.note.body
     }
+
     onChangeHandler = event => {
         this.setState({
             txtValue : event.target.value
         })
     }
 
+    onEdit = () => {
+        this.props.onEdit(this.state.txtValue)
+    }
     render(){
         return (
             <div className="col-sm-10 offset-sm-1 col-md-8 offset-md-2">
@@ -33,7 +37,8 @@ class EditNote extends React.Component{
                         <br/><br/>
                         <div className="row">
                             <div className="col-6">
-                                <button className="btn btn-outline-dark btn-block">Edit</button>
+                                <button className="btn btn-outline-dark btn-block"
+                                    onClick={this.onEdit}>Edit</button>
                             </div>
                             <div className="col-6">
                             <button className="btn btn-outline-danger btn-block"

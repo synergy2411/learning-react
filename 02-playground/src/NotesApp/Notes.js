@@ -14,6 +14,8 @@ class Notes extends React.Component{
         showEditNote : false
     }
 
+    
+
     onSelectedNote = id =>{
         this.setState({
             selectedNoteId : id, 
@@ -30,6 +32,17 @@ class Notes extends React.Component{
             showEditNote : false
         })
     }
+
+    onNoteEdit = (body, id) => {
+        const duplicateNotes = [...this.state.notes];
+        const position = duplicateNotes.findIndex(n => n.id == id);
+        duplicateNotes[position].body = body;
+        this.setState({
+            notes : duplicateNotes,
+            showEditNote : false,
+            selectedNoteId : null
+        }) 
+    }
     render(){
         let notes= this.state.notes.map(note => {
             return <Note note={note} 
@@ -42,7 +55,8 @@ class Notes extends React.Component{
             const position = this.state.notes.findIndex(n => n.id === this.state.selectedNoteId);
             const notes = [...this.state.notes];
             editNote = <EditNote note={notes[position]}
-                                onDelete = {() => this.onNoteDelete(notes[position].id)} />
+                                onDelete = {() => this.onNoteDelete(notes[position].id)} 
+                                onEdit = { body => this.onNoteEdit(body, notes[position].id)}/>
         }
 
         return (
