@@ -46,6 +46,17 @@ class Notes extends React.Component{
 
     addNote = (title, body) => {
         // write code for add item in state notes  
+        const note = {
+            id : this.state.notes.length + 1,
+            title, body
+        }
+        
+        const duplicateNotes = [...this.state.notes, note];
+
+        this.setState({
+            notes : duplicateNotes,
+            showNewNoteForm : false
+        })
     }
 
     render(){
