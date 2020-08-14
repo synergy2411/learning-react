@@ -15,7 +15,6 @@ class Notes extends React.Component{
     componentDidMount = () => {
         axios.default.get("https://learning-mate.firebaseio.com/notes.json")
             .then(response => {
-                console.log("RESPONSE : ", response);
                 this.setState({
                     notes : response.data
                 })

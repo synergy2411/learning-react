@@ -4,18 +4,21 @@ class NewNoteForm extends React.Component{
 
     state ={
         title : '',
-        body : '',
+        // body : '',
         errorMessage : '',
         hasError : false
     }
 
+    bodyRef = React.createRef();
+
     onAddNote = event => {
         event.preventDefault();
-        if(this.state.title === '' || this.state.body === ''){
+        console.log("BODY : ", this.bodyRef.current.value)
+        if(this.state.title === ''){
             this.setState({errorMessage : "Both fields are mandatory", hasError : true})
         }else{
-            const {title, body} = this.state;
-        this.props.onAddNewNote(title, body);
+            const {title } = this.state;
+        this.props.onAddNewNote(title, this.bodyRef.current.value);
         }
         
     }
@@ -60,8 +63,13 @@ class NewNoteForm extends React.Component{
                             <input type="text" 
                                 className="form-control" 
                                 name="body" 
+                                ref = {this.bodyRef}
+                                />
+                            {/* <input type="text" 
+                                className="form-control" 
+                                name="body" 
                                 onChange = {event => this.setState({body : event.target.value})}
-                                value ={this.state.body}/>
+                                value ={this.state.body}/> */}
                         </div>
                     </div>
                     <br/>
