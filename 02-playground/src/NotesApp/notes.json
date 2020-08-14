@@ -1,0 +1,24 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "shopping",
+      "body": "buy the pulses"
+    },
+    {
+      "id": 2,
+      "title": "insurance",
+      "body": "renew the car insurance"
+    },
+    {
+      "id": 3,
+      "title": "plants",
+      "body": "pot the plants"
+    },
+    {
+      "id": 4,
+      "title": "reading",
+      "body": "read the books"
+    }
+  ]
+}

@@ -2,18 +2,25 @@ import React from 'react';
 import Note from './Note/Note';
 import EditNote from './EditNote/EditNote';
 import NewNoteForm from './NewNoteForm/NewNoteForm';
+import * as axios from 'axios';
 
 class Notes extends React.Component{
     state = {
-        notes : [
-            {id : 1, title : "shopping", body : "buy the pulses"},
-            {id : 2, title : "insurance", body : "renew the car insurance"},
-            {id : 3, title : "plants", body : "pot the plants"},
-            {id : 4, title : "reading", body : "read the books"},
-        ],
+        notes : [],
         selectedNoteId : null,
         showEditNote : false,
         showNewNoteForm : false
+    }
+
+    componentDidMount = () => {
+        axios.default.get("https://learning-mate.firebaseio.com/notes.json")
+            .then(response => {
+                console.log("RESPONSE : ", response);
+                this.setState({
+                    notes : response.data
+                })
+            })
+            .catch(err => console.log(err));
     }
 
     onSelectedNote = id =>{

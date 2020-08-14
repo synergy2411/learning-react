@@ -17,9 +17,9 @@ function App() {
       <h3>React Playground</h3>
       <hr />
 
-      <PropsParent />
+      {/* <PropsParent /> */}
 
-      {/* <Notes /> */}
+      <Notes />
 
 
 
