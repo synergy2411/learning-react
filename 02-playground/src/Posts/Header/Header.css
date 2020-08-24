@@ -1,0 +1,18 @@
+ul{
+    list-style : none;
+}
+
+ul li{
+    margin : 15px;
+    padding : 8px;
+    display: inline-block;
+}
+
+ul li a{
+    color : black;
+}
+
+ul li a:hover{
+    cursor: pointer;
+    color : blueviolet;
+}
