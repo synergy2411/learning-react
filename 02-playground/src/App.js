@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import MyComponent from "./Components/ClassesBased";
 import FunctionalCmp from "./Components/FunctionBased";
@@ -11,15 +11,21 @@ import Notes from "./NotesApp/Notes";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import PropsParent from "./PropTypesDemo/PropsParent";
 import FormValidationDemo from './FormValidationDemo/FormValidationDemo';
+import HooksDemo from "./HooksDemo/HooksDemo";
 
 function App() {
+  let [showHooksDemo, setShowHooksDemo] = useState(true);
+  
   return (
     <div className="container">
       <h3>React Playground</h3>
       <hr />
 
+    <button onClick={() => setShowHooksDemo(!showHooksDemo)}>Toggle Hooks Demo</button>
+    
+    {showHooksDemo ? <HooksDemo /> : null}
 
-    <FormValidationDemo />
+    {/* <FormValidationDemo /> */}
 
       {/* <PropsParent /> */}
 
