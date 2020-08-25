@@ -5,11 +5,17 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 import Counter from "./Counter/Counter";
-import rootReducer from "./Counter/store/reducers/rootReducer";
-import { createStore } from "redux";
+// import rootReducer from "./Counter/store/reducers/rootReducer";
+import counterReducer from './Counter/store/reducers/counterReducer';
+import resultReducer from './Counter/store/reducers/resultsReducer';
+
+import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
-const store = createStore(rootReducer);
+const store = createStore(combineReducers({
+  ctr: counterReducer,
+  res : resultReducer
+}));
 
 ReactDOM.render(
   // <StrictMode>

@@ -1,8 +1,7 @@
 import * as counterActions from "../actions/counterActions";
 
 const initialState = {
-  counter: 99,
-  results: [],
+  counter: 99
 };
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -28,21 +27,6 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         counter: state.counter - action.value,
-      };
-    }
-    case counterActions.STORE_RESULT: {
-      return {
-        ...state,
-        results: [...state.results.concat(state.counter)],
-      };
-    }
-    case counterActions.DELETE_ITEM: {
-      const duplicateResults = state.results.filter(
-        (result) => result !== action.item
-      );
-      return {
-        ...state,
-        results: [...duplicateResults],
       };
     }
     default: {

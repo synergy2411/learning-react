@@ -39,8 +39,26 @@ class Counter extends Component {
                 Substract by 5
               </button>
             </div>
+            <div className="row">
+                <button className="btn btn-outline-success" 
+                    onClick={() => this.props.onStoreResult(this.props.counter)}>Store Result</button>
+            </div>
           </div>
         </div>
+
+        <hr/>
+        <ul className="list-group">
+
+            {this.props.results.map(r => {
+                return <li className="list-group-item" 
+                            key={Math.random()}
+                            onClick={() => this.props.onDeleteItem(r)} 
+                            style={{cursor : 'pointer'}}> {r} </li>
+            })}
+            
+            
+        </ul>
+
       </div>
     );
   }
@@ -48,7 +66,8 @@ class Counter extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    counter: state.counter,
+    counter: state.ctr.counter,
+    results : [...state.res.results]
   };
 };
 
@@ -63,6 +82,13 @@ const mapDispatchToProps = (dispatch) => {
     onAdd : (value) => {dispatch({type : counterActions.ADD_COUNTER, value})},
     onSubstract : value => {
         dispatch(counterActions.onSubstract(value))
+    },
+    onStoreResult : (counterValue) => {
+        dispatch({type : counterActions.STORE_RESULT, value : counterValue })
+    },
+    onDeleteItem : (r) => {
+        // dispatch({type : counterActions.DELETE_ITEM, item : r})
+        dispatch(counterActions.onDeleteItem(r))
     }
   };
 };
