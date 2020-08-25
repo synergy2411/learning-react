@@ -6,16 +6,22 @@ import * as serviceWorker from "./serviceWorker";
 
 import Counter from "./Counter/Counter";
 // import rootReducer from "./Counter/store/reducers/rootReducer";
-import counterReducer from './Counter/store/reducers/counterReducer';
-import resultReducer from './Counter/store/reducers/resultsReducer';
+import counterReducer from "./Counter/store/reducers/counterReducer";
+import resultReducer from "./Counter/store/reducers/resultsReducer";
+import logger from './Counter/store/middlewares/logger';
 
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 
-const store = createStore(combineReducers({
-  ctr: counterReducer,
-  res : resultReducer
-}));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  combineReducers({
+    ctr: counterReducer,
+    res: resultReducer,
+  }),
+  composeEnhancers(applyMiddleware(logger))
+);
 
 ReactDOM.render(
   // <StrictMode>
